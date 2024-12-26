@@ -3,8 +3,39 @@
   <head>
     <meta charset="utf-8">
     <title>你好，GitHub</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript">
+        function load_data_last()
+        {
+  
+            // get data
+            $.get("https://data.gcis.nat.gov.tw/od/data/api/236EE382-4942-41A9-BD03-CA0709025E7C?$format=json&$filter=Business_Accounting_NO%20eq%2020828393&$skip=0&$top=50",
+                function(data)
+                {
+                    console.log(data);
+                    if (data.length==0)
+                        return;
+    
+                    mo_no_content = data;
+                    
+                    $("#show_data").text(mo_no_content);
+                    
+                }
+            );
+    
+        }
+        
+      </script>
   </head>
   <body>
-    <h1>覺得厲害</h1>
+    <div id="show_data"></div>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+    
+            load_data_last();
+    
+        });
+
+      </script>
   </body>
 </html>
